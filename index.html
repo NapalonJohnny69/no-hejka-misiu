@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>No hejka misiu</title>
+<style>
+body {
+    margin: 0;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+img {
+    width: 90%;
+    max-width: 400px;
+    transition: 0.2s;
+}
+
+/* Efekt po kliknięciu */
+.obraza {
+    animation: obraza 0.5s infinite alternate, puls 1s infinite alternate;
+}
+
+@keyframes obraza {
+    0% { transform: rotate(-5deg) scale(1); }
+    50% { transform: rotate(5deg) scale(1.05); }
+    100% { transform: rotate(-5deg) scale(1); }
+}
+
+@keyframes puls {
+    0% { filter: brightness(100%); }
+    50% { filter: brightness(150%); }
+    100% { filter: brightness(100%); }
+}
+</style>
+</head>
+<body>
+
+<audio id="muzyka" src="muza.mp3"></audio>
+<img id="obraz" src="foto.jpg" />
+
+<script>
+let gra = false;
+const audio = document.getElementById("muzyka");
+const img = document.getElementById("obraz");
+
+img.onclick = () => {
+    if (!gra) {
+        audio.play();
+        img.classList.add("obraza");
+        gra = true;
+    } else {
+        audio.pause();
+        img.classList.remove("obraza");
+        gra = false;
+    }
+};
+</script>
+
+</body>
+</html>
